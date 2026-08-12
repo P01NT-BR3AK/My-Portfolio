@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Terrell{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__log">
+      <span class="prompt">$</span> whoami
+    </div>
+    <h1 class="hero__title">
+      Terrell <span class="hero__title-sub">builds systems that spot patterns
+      humans miss — in binaries, and in bodies.</span>
+    </h1>
+    <p class="hero__desc">
+      Year 12 researcher working across malware lineage analysis and medical
+      imaging. Two active projects below — one traces how malicious code
+      evolves, the other reads chest X-rays.
+    </p>
+    <div class="hero__cta">
+      <a href="#projects" class="btn btn-outline-terminal">view projects ↓</a>
+      <a href="{{ url_for('main.about') }}#contact" class="btn btn-terminal">get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-eyebrow"><span class="prompt">$</span> ls ./projects</div>
+
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-md-6">
+        <a href="{{ url_for('main.project_detail', slug=project.slug) }}" class="project-card project-card--{{ project.accent }}">
+          <div class="project-card__head">
+            <span class="project-card__dir">/{{ project.slug }}</span>
+            <span class="project-card__status">{{ project.status }}</span>
+          </div>
+          <h2 class="project-card__name">{{ project.name }}</h2>
+          <p class="project-card__tagline">{{ project.tagline }}</p>
+          <p class="project-card__summary">{{ project.summary[:170] }}…</p>
+          <div class="project-card__stack">
+            {% for tech in project.stack[:4] %}
+            <span class="chip">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-card__stats">
+            {% for stat in project.stats[:3] %}
+            <div class="mini-stat">
+              <span class="mini-stat__value">{{ stat.value }}</span>
+              <span class="mini-stat__label">{{ stat.label }}</span>
+            </div>
+            {% endfor %}
+          </div>
+          <span class="project-card__link">read full writeup →</span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

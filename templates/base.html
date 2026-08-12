@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Terrell{% endblock %} — /research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container site-nav__inner">
+      <a class="site-nav__brand" href="{{ url_for('main.home') }}">
+        <span class="prompt">~</span>/terrell
+      </a>
+      <div class="site-nav__links">
+        <a href="{{ url_for('main.home') }}#projects">projects</a>
+        <a href="{{ url_for('main.about') }}">about</a>
+        <a href="{{ url_for('main.about') }}#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <span>terrell — year 12, systems &amp; ml research</span>
+      <span class="site-footer__meta">built with flask · bootstrap · too much coffee</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
