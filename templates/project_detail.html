@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}{{ project.name }}{% endblock %}
+
+{% block content %}
+
+<section class="detail-hero detail-hero--{{ project.accent }}">
+  <div class="container">
+    <div class="section-eyebrow">
+      <a href="{{ url_for('main.home') }}" class="breadcrumb-back">~/terrell</a>
+      <span class="prompt">/</span>{{ project.slug }}
+    </div>
+    <div class="detail-hero__top">
+      <h1 class="detail-hero__title">{{ project.name }}</h1>
+      <span class="status-pill">{{ project.status }}</span>
+    </div>
+    <p class="detail-hero__tagline">{{ project.tagline }}</p>
+    <div class="detail-hero__stack">
+      {% for tech in project.stack %}
+      <span class="chip chip--outline">{{ tech }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="detail-stats">
+  <div class="container">
+    <div class="row g-3">
+      {% for stat in project.stats %}
+      <div class="col-6 col-md-3">
+        <div class="stat-block">
+          <span class="stat-block__value">{{ stat.value }}</span>
+          <span class="stat-block__label">{{ stat.label }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="detail-body">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-8">
+
+        <div class="detail-block">
+          <div class="section-eyebrow"><span class="prompt">$</span> cat overview.md</div>
+          <p class="detail-block__text">{{ project.summary }}</p>
+        </div>
+
+        {% if project.screenshots %}
+        <div class="detail-block">
+          <div class="section-eyebrow"><span class="prompt">$</span> ls ./screenshots</div>
+          <div class="screenshot-gallery">
+            {% for shot in project.screenshots %}
+            <figure class="screenshot-item">
+              <img src="{{ url_for('static', filename='img/' ~ shot.file) }}" alt="{{ shot.caption }}" loading="lazy">
+              <figcaption>{{ shot.caption }}</figcaption>
+            </figure>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="detail-block">
+          <div class="section-eyebrow"><span class="prompt">$</span> grep -r "highlights"</div>
+          <div class="highlight-list">
+            {% for h in project.highlights %}
+            <div class="highlight-item">
+              <h3>{{ h.title }}</h3>
+              <p>{{ h.body }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="section-eyebrow"><span class="prompt">$</span> git log --oneline</div>
+          <ul class="timeline-list">
+            {% for step in project.timeline %}
+            <li>{{ step }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+        <div class="limitations-box">
+          <div class="section-eyebrow"><span class="prompt">$</span> cat known_issues.log</div>
+          <ul class="limitations-list">
+            {% for l in project.limitations %}
+            <li>{{ l }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="detail-nav">
+      <a href="{{ url_for('main.home') }}#projects" class="btn btn-outline-terminal">← back to projects</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
