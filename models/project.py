@@ -100,8 +100,9 @@ PROJECTS = {
             "Added installer-wrapper detection after discovering a "
             "persistently-misclassified sample was actually an NSIS-wrapped "
             "payload, not a raw binary.",
-            "Currently retraining and validating ahead of a Young ICT "
-            "Explorers presentation.",
+            "Presented WedgeTail as a keynote at SecTalks GC, covering the "
+            "concept, the ML landscape it sits in, and an honest breakdown "
+            "of what did and didn't work.",
         ],
         accent="amber",
         screenshots=[

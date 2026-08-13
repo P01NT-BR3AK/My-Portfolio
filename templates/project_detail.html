@@ -50,13 +50,28 @@
         {% if project.screenshots %}
         <div class="detail-block">
           <div class="section-eyebrow"><span class="prompt">$</span> ls ./screenshots</div>
-          <div class="screenshot-gallery">
-            {% for shot in project.screenshots %}
-            <figure class="screenshot-item">
-              <img src="{{ url_for('static', filename='img/' ~ shot.file) }}" alt="{{ shot.caption }}" loading="lazy">
-              <figcaption>{{ shot.caption }}</figcaption>
-            </figure>
-            {% endfor %}
+          <div id="screenshotCarousel" class="carousel slide terminal-carousel" data-bs-ride="false">
+            <div class="carousel-inner">
+              {% for shot in project.screenshots %}
+              <div class="carousel-item{% if loop.first %} active{% endif %}">
+                <img src="{{ url_for('static', filename='img/' ~ shot.file) }}" alt="{{ shot.caption }}">
+                <div class="carousel-caption">{{ shot.caption }}</div>
+              </div>
+              {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#screenshotCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#screenshotCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <div class="carousel-indicators">
+              {% for shot in project.screenshots %}
+              <button type="button" data-bs-target="#screenshotCarousel" data-bs-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
+              {% endfor %}
+            </div>
           </div>
         </div>
         {% endif %}
