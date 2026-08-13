@@ -439,33 +439,59 @@ a:hover { color: #ffcb4d; }
   font-weight: 700;
 }
 
-.screenshot-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
-}
-
-.screenshot-item {
-  margin: 0;
+.terminal-carousel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
+  max-width: 560px;
 }
 
-.screenshot-item img {
-  display: block;
+.terminal-carousel .carousel-item img {
   width: 100%;
-  height: auto;
-  border-bottom: 1px solid var(--border);
+  height: 260px;
+  object-fit: cover;
+  display: block;
 }
 
-.screenshot-item figcaption {
-  padding: 0.85rem 1rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  line-height: 1.5;
+.terminal-carousel .carousel-control-prev,
+.terminal-carousel .carousel-control-next {
+  width: 3rem;
+  opacity: 0.7;
+}
+.terminal-carousel .carousel-control-prev:hover,
+.terminal-carousel .carousel-control-next:hover {
+  opacity: 1;
+}
+
+.terminal-carousel .carousel-control-prev-icon,
+.terminal-carousel .carousel-control-next-icon {
+  background-color: rgba(10, 13, 12, 0.6);
+  border-radius: 50%;
+  padding: 1.1rem;
+  background-size: 55%;
+}
+
+.terminal-carousel .carousel-indicators {
+  position: static;
+  margin: 0.75rem 0 0;
+  padding: 0 1.25rem 1rem;
+}
+
+.terminal-carousel .carousel-indicators [data-bs-target] {
+  background-color: var(--border);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.terminal-carousel .carousel-indicators .active {
+  background-color: var(--amber);
+}
+
+@media (max-width: 767px) {
+  .terminal-carousel .carousel-item img { height: 200px; }
 }
 
 .detail-nav { margin-top: 2rem; }
@@ -511,21 +537,6 @@ a:hover { color: #ffcb4d; }
   color: var(--text-muted);
   max-width: 68ch;
   margin-bottom: 2rem;
-}
-
-.keynote-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-}
-
-.keynote-gallery img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  display: block;
 }
 
 .contact-form .form-label {

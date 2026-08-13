@@ -55,7 +55,6 @@
               {% for shot in project.screenshots %}
               <div class="carousel-item{% if loop.first %} active{% endif %}">
                 <img src="{{ url_for('static', filename='img/' ~ shot.file) }}" alt="{{ shot.caption }}">
-                <div class="carousel-caption">{{ shot.caption }}</div>
               </div>
               {% endfor %}
             </div>
