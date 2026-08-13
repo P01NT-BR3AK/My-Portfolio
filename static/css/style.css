@@ -444,19 +444,20 @@ a:hover { color: #ffcb4d; }
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
-  max-width: 560px;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .terminal-carousel .carousel-item img {
   width: 100%;
-  height: 260px;
+  height: 200px;
   object-fit: cover;
   display: block;
 }
 
 .terminal-carousel .carousel-control-prev,
 .terminal-carousel .carousel-control-next {
-  width: 3rem;
+  width: 2.25rem;
   opacity: 0.7;
 }
 .terminal-carousel .carousel-control-prev:hover,
@@ -468,8 +469,8 @@ a:hover { color: #ffcb4d; }
 .terminal-carousel .carousel-control-next-icon {
   background-color: rgba(10, 13, 12, 0.6);
   border-radius: 50%;
-  padding: 1.1rem;
-  background-size: 55%;
+  padding: 0.85rem;
+  background-size: 50%;
 }
 
 .terminal-carousel .carousel-indicators {
@@ -491,7 +492,8 @@ a:hover { color: #ffcb4d; }
 }
 
 @media (max-width: 767px) {
-  .terminal-carousel .carousel-item img { height: 200px; }
+  .terminal-carousel { max-width: 100%; }
+  .terminal-carousel .carousel-item img { height: 180px; }
 }
 
 .detail-nav { margin-top: 2rem; }
