@@ -498,7 +498,7 @@ a:hover { color: #ffcb4d; }
   background-color: var(--amber);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .terminal-carousel {
     max-width: 100%;
   }
