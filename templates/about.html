@@ -9,11 +9,12 @@
     <h1 class="about-hero__title">About</h1>
     <p class="about-hero__text">
       I'm Terrell, a Year 12 student who spends most of spare time somewhere
-      between a Jupyter notebook and a debugger. I'm interested in systems
-      that find structure in messy data — whether that's tracing how a piece
-      of malware evolved from an earlier strain, or teaching a model to read
-      a chest X-ray. I care more about a project being honest about its
-      limitations than about it looking finished.
+      between a Jupyter notebook and a debugger. I'm a cyber security
+      enthusiast at heart, and I'm interested in systems that find structure
+      in messy data — whether that's tracing how a piece of malware evolved
+      from an earlier strain, or teaching a model to read a chest X-ray. I
+      care more about a project being honest about its limitations than
+      about it looking finished.
     </p>
   </div>
 </section>
@@ -65,27 +66,50 @@
   </div>
 </section>
 
+<section class="keynote">
+  <div class="container">
+    <div class="section-eyebrow"><span class="prompt">$</span> cat keynote.log</div>
+    <h2 class="keynote__title">Young ICT Explorers Keynote</h2>
+    <p class="keynote__text">
+      I presented WedgeTail as a keynote for Young ICT Explorers — walking
+      through the malware lineage concept, the ML landscape it sits in, the
+      real problems I hit along the way (packing and obfuscation, no ground
+      truth for lineage), and an honest breakdown of what did and didn't
+      work.
+    </p>
+    <div class="keynote-gallery">
+      <img src="{{ url_for('static', filename='img/keynote/keynote-1.jpg') }}" alt="Presenting the WedgeTail Lineage Tree module on stage" loading="lazy">
+      <img src="{{ url_for('static', filename='img/keynote/keynote-2.jpg') }}" alt="Section 4: What Did and Didn't Work slide" loading="lazy">
+      <img src="{{ url_for('static', filename='img/keynote/keynote-3.jpg') }}" alt="Presenting the Analyse Sample module to the audience" loading="lazy">
+      <img src="{{ url_for('static', filename='img/keynote/keynote-4.jpg') }}" alt="Problem 1: Packing and Obfuscation slide" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="container">
     <div class="section-eyebrow"><span class="prompt">$</span> ./contact --send</div>
     <div class="row">
       <div class="col-lg-7">
-        <form class="contact-form">
+        <form class="contact-form" action="https://formspree.io/f/xjybrazj" method="POST">
           <div class="mb-3">
             <label class="form-label" for="name">name</label>
-            <input type="text" class="form-control" id="name" placeholder="jane doe">
+            <input type="text" class="form-control" id="name" name="name" placeholder="jane doe" required>
           </div>
           <div class="mb-3">
             <label class="form-label" for="email">email</label>
-            <input type="email" class="form-control" id="email" placeholder="jane@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="jane@example.com" required>
           </div>
           <div class="mb-3">
             <label class="form-label" for="message">message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="say hello, or ask about a project"></textarea>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="say hello, or ask about a project" required></textarea>
           </div>
+          <input type="text" name="_gotcha" style="display:none">
           <button type="submit" class="btn btn-terminal">send message</button>
-          <p class="contact-form__note">Note: this form is a placeholder — wire it up to an email service or backend route to actually receive messages.</p>
         </form>
+        <div class="contact-form__success" id="contact-success" hidden>
+          <p>Message sent — thanks for reaching out. I'll get back to you soon.</p>
+        </div>
       </div>
     </div>
   </div>

@@ -127,7 +127,7 @@ PROJECTS = {
         slug="lungvision",
         name="LungVision",
         tagline="Chest X-ray triage across six respiratory conditions",
-        status="Research prototype",
+        status="Archived — no longer active",
         stack=["Python", "fastai", "PyTorch", "ResNet-152", "Jupyter"],
         summary=(
             "LungVision is a computer vision model trained to classify chest "
